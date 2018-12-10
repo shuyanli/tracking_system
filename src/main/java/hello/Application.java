@@ -6,6 +6,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
+import java.awt.print.Pageable;
 
 
 @SpringBootApplication
@@ -47,9 +51,11 @@ public class Application {
 
             log.info("Customer found with findByLastName('li'):");
             log.info("--------------------------------------------");
-            repository.findCustomerByLastName("li").forEach(res->{
-                log.info(res.toString());
-            });
+//            repository.findCustomerByLastName("li").forEach(res->{
+//                log.info(res.toString());
+//            });
+//            Pageable pageable = new PageRequest(1, 3);
+//            Page<Customer> res = repository.findCustomerByLastName("li", pageable);
 
 
 
