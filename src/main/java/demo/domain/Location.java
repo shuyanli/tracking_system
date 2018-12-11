@@ -40,8 +40,8 @@ public class Location {
 
     @Embedded
     @AttributeOverrides({ //todo 这个是定义对应field在数据库colume叫啥, 可以试一下不定义原本叫啥(猜测可能就是本名)
-            @AttributeOverride(name = "fmi", column = @Column(name = "medical_fmi"));
-            @AttributeOverride(name = "bfr", column = @Column(name = "medical_bfr"));
+            @AttributeOverride(name = "fmi", column = @Column(name = "medical_fmi")),
+            @AttributeOverride(name = "bfr", column = @Column(name = "medical_bfr"))
     })
     MedicalInfo medicalInfo;
 
