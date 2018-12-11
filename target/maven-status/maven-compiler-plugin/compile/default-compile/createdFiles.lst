@@ -1,3 +1,6 @@
-hello/Customer.class
-hello/CustomerRepository.class
-hello/Application.class
+toy/domain/Customer.class
+toy/service/impl/customerServiceImpl.class
+toy/Application.class
+toy/service/customerService.class
+toy/rest/toyApplicationController.class
+toy/domain/CustomerRepository.class
