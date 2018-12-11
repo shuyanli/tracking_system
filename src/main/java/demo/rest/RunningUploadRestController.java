@@ -2,7 +2,7 @@ package demo.rest;
 
 
 import demo.domain.Location;
-import demo.service.LocationServiceImpl;
+import demo.service.impl.LocationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

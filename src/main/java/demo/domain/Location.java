@@ -3,8 +3,9 @@ package demo.domain;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import org.springframework.data.annotation.Id;
+import lombok.Data; //自动建立并隐藏private field的constructor
+//import org.springframework.data.annotation.Id;  //todo: place goes wrong
+//不知道为何他自动产生了这个, 导致@Id引自这里, 这是错的
 
 import javax.persistence.*;
 import java.util.Date;
@@ -19,7 +20,7 @@ import java.util.Date;
 public class Location {
 
     public enum GpsStatus{
-        EXCELELENT, OK, UNRELIABLE, BAD, NOFIX, UNKNOWN;
+        EXCELLENT, OK, UNRELIABLE, BAD, NOFIX, UNKNOWN;
     }
 
     public enum RunnerMovementType{
@@ -30,6 +31,7 @@ public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue //todo 1
     private long id;
 
     @Embedded //与object中@Embedable呼应, JPA/Hibernate
