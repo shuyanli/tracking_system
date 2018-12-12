@@ -1,9 +1,13 @@
 package toy.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import javax.persistence.*;
 
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 @Entity
 @Table(name = "CUSTOMER")
@@ -19,7 +23,7 @@ public class Customer {
 
     protected Customer(){}
 
-
+    //@JsonCreator //用作嵌套object的时候, 逆序列化时用传进来的json的某一个field作为嵌套object的constructor
     public Customer(String firstName, String lastName, int point) {
         this.firstName = firstName;
         this.lastName = lastName;
