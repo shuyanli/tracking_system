@@ -17,10 +17,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 //todo 回答: annotaion用于处理nosql, persistence用于jpa(如之前的h2)
 
 
-@Document //todo jpa中的entity
+
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
+@Document //todo jpa中的entity
 @Data
 @RequiredArgsConstructor(onConstructor = @_(@PersistenceConstructor))
+
 /*
 //todo  0. @NoArgsConstructor, @RequiredArgsConstructor and @AllArgsConstructor叫做"构造器", 也就是说它们是指导如何生成构造函数的
 //todo  1. 条件: 针对函数中有final项(object), 目前annotaion起作用(其它两个不知道什么条件). 2.当构造函数被调用的时候, 会在上面加一个@PersistenceConstructor这个annotation
@@ -46,29 +48,30 @@ public class SupplyLocation {
     //加速对经纬度的查询的速度
     @GeoSpatialIndexed
     @JsonIgnore  //json进来的时候是两个点, 这个是通过jsoncreator创建的, 所以我们不希望point这个field被json mapping到, 避免错误
-    private final Point point; //point是一个object, 他自己的构造函数上就有那个annotation, 就像jpa加上embedded一样,
+    private final Point location; //point是一个object, 他自己的构造函数上就有那个annotation, 就像jpa加上embedded一样,
                                 //我们加上final和上面的annotation才能让mongoDB知道这个是个object
-
+    //todo 上面这个Point location一开始写作Point point, 结果repo就不认识它了
+    //如果写成了Point point, 就应该在repo里也写成findFirstPointNear之类的
 
     private String state;
     private String zip;
     private String type;
 
     public SupplyLocation(){
-        this.point=  new Point(0,0);
+        this.location=  new Point(0,0);
     }
 
     @JsonCreator
     public SupplyLocation(@JsonProperty("latitude") int x,@JsonProperty("longitude") int y){
-        this.point = new Point(x, y);
+        this.location = new Point(x, y);
     }
 
     public double getLongitude(){
-        return point.getX();
+        return location.getX();
     }
 
     public double getLatitude(){
-        return point.getY();
+        return location.getY();
     }
 
 
