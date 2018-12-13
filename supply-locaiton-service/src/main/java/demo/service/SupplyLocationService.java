@@ -6,7 +6,7 @@ import org.springframework.data.geo.Point;
 import java.util.List;
 
 public interface SupplyLocationService {
-    SupplyLocation findFirstByLocation(Point point);
+    SupplyLocation findFirstByLocationNear(Point point);
 
     void delete();
 

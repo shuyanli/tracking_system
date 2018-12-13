@@ -19,10 +19,12 @@ public class SupplyLocationRestController {
         this.supplyLocationService = supplyLocationService;
     }
 
-    @RequestMapping(value = "/bulk/", method = RequestMethod.GET)
+
+    //todo 这个怎么用?? 怎么在url里面传入point?
+    @RequestMapping(value = "/bulk", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     SupplyLocation findFirstByLocation(@RequestParam(value = "point") Point point){
-        return supplyLocationService.findFirstByLocation(point);
+        return supplyLocationService.findFirstByLocationNear(point);
     }
 
     @RequestMapping(value = "/bulk/supplyLocations", method = RequestMethod.POST)

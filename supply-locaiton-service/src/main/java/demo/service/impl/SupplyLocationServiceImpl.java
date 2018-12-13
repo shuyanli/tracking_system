@@ -20,7 +20,7 @@ public class SupplyLocationServiceImpl implements SupplyLocationService {
     }
 
     @Override
-    public SupplyLocation findFirstByLocation(Point point) {
+    public SupplyLocation findFirstByLocationNear(Point point) {
         return supplyLocationRepository.findFirstByLocationNear(point);
     }
 

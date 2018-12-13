@@ -7,7 +7,9 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 
 //todo 这个的意思是将这个repo暴露给其他service来使用, 而不需要通过我自己的controller接口来访问
-//用法: 端口+path
+//举例: 直接在postman输入 GET http://localhost:9001/supplyLocations , 就能得到所有存的内容(getall)
+//GET http://localhost:9001/supplyLocations?page=1&size=10 直接得到分页好的信息
+//原因: 父类(PagingAndSortingRepository)中有findAll的两个方法, 直接调用了
 @RepositoryRestResource(path = "supplyLocations")
 public interface SupplyLocationRepository  extends PagingAndSortingRepository<SupplyLocation, String> {
     SupplyLocation findFirstByLocationNear(@Param("location") Point Location); //todo 为何你们不是findFirstPointNear
