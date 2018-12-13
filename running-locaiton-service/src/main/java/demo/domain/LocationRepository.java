@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 /*
 JpaRepository extends PagingAndSortingRepository which in turn extends CrudRepository.
@@ -20,7 +21,8 @@ So if you don't need the repository to have the functions provided by JpaReposit
 @RepositoryRestResource(path = "locations") //todo 第二个微服务沿用过来
 public interface LocationRepository extends JpaRepository<Location, Long> {
 
-
+    @RestResource(path = "runners") //可以直接使用localhost:9000/locations/runners获得
+    //todo  详细可以浏览器进9000 有可视化的工具(引入的hal-browser), 并且让这个restResource只需要加一次, 这两个都能识别
     Page<Location> findByRunnerMovementType(Location.RunnerMovementType movementType, Pageable pageable);
 
     Page<Location> findByUnitInfoRunningId(String runningId, Pageable pageable);
