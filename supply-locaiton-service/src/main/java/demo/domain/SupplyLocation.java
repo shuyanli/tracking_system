@@ -1,6 +1,7 @@
 package demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -19,10 +20,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document //todo jpa中的entity
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Data
-@RequiredArgsConstructor(onConstructor = @_(@PersistenceConstructor)) 
+@RequiredArgsConstructor(onConstructor = @_(@PersistenceConstructor))
 /*
 //todo  0. @NoArgsConstructor, @RequiredArgsConstructor and @AllArgsConstructor叫做"构造器", 也就是说它们是指导如何生成构造函数的
-//todo  1. 条件: 函数中有final项, 目前annotaion起作用(其它两个不知道什么条件). 2.当构造函数被调用的时候, 会在上面加一个@PersistenceConstructor这个annotation
+//todo  1. 条件: 针对函数中有final项(object), 目前annotaion起作用(其它两个不知道什么条件). 2.当构造函数被调用的时候, 会在上面加一个@PersistenceConstructor这个annotation
 //todo  3. PersistenceConstructor的作用是声明一个构造函数时, 传入的值是从数据库中取出的数据\
 
 也就是说, lombok会给我们弄出这么个东西(我们看不见)
@@ -44,7 +45,9 @@ public class SupplyLocation {
     //对应上面的spring data geo location. 是mongodb自带的对于地理信息的index, 包含x和y, 通过point就可以
     //加速对经纬度的查询的速度
     @GeoSpatialIndexed
-    private final Point point;
+    @JsonIgnore  //json进来的时候是两个点, 这个是通过jsoncreator创建的, 所以我们不希望point这个field被json mapping到, 避免错误
+    private final Point point; //point是一个object, 他自己的构造函数上就有那个annotation, 就像jpa加上embedded一样,
+                                //我们加上final和上面的annotation才能让mongoDB知道这个是个object
 
 
     private String state;
