@@ -12,7 +12,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 //原因: 父类(PagingAndSortingRepository)中有findAll的两个方法, 直接调用了
 @RepositoryRestResource(path = "supplyLocations")
 public interface SupplyLocationRepository  extends PagingAndSortingRepository<SupplyLocation, String> {
-    SupplyLocation findFirstByLocationNear(@Param("location") Point Location); //todo 为何你们不是findFirstPointNear
+    SupplyLocation findFirstByLocationNear(@Param("location") Point Location); //todo 为何你们不是findFirstPointNear->如果叫point就得是这个, name matter!!
 }
 
 //todo 为什么我们这里没有@Bean这种注入, 而在controller/service里面可以直接用autowire拿来用?

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/running-locaiton-service/running-location-service.iml" filepath="$PROJECT_DIR$/running-locaiton-service/running-location-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-nike-running/spring-cloud-nike-running.iml" filepath="$PROJECT_DIR$/spring-cloud-nike-running/spring-cloud-nike-running.iml" />
       <module fileurl="file://$PROJECT_DIR$/supply-locaiton-service/supply-locaiton-service.iml" filepath="$PROJECT_DIR$/supply-locaiton-service/supply-locaiton-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/tracking_system.iml" filepath="$PROJECT_DIR$/.idea/tracking_system.iml" />
     </modules>
