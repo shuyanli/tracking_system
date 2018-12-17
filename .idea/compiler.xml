@@ -7,16 +7,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="running-location-distribution" />
         <module name="running-location-service" />
-        <module name="spring-cloud-nike-running" />
+        <module name="running-location-simulator" />
+        <module name="running-location-updater" />
         <module name="supply-locaiton-service" />
         <module name="tracking_system" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="running-location-distribution" target="1.8" />
       <module name="running-location-service" target="1.8" />
+      <module name="running-location-simulator" target="1.8" />
+      <module name="running-location-updater" target="1.8" />
       <module name="runninglocationservice" target="1.5" />
-      <module name="spring-cloud-nike-running" target="1.5" />
+      <module name="spring-cloud-nike-running" target="1.8" />
       <module name="supply-locaiton-service" target="1.8" />
       <module name="tracking_system" target="1.8" />
     </bytecodeTargetLevel>
