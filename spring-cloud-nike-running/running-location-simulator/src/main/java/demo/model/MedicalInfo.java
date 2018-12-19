@@ -6,7 +6,7 @@ import lombok.Data;
 public class MedicalInfo {
     private long medicalInfoId;
     private String bandMake;
-    private String medicalInfoClassificatiln;
+    private String medicalInfoClassification;
     private String description;
     private String aidInstruction;
 }
