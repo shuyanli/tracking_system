@@ -1,0 +1,12 @@
+server:
+  port: 9005
+
+spring:
+  application:
+    name: running-location-simulator
+
+com:
+  shuyan:
+    running:
+      location:
+        distribution: http://running-location-distribution

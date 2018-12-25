@@ -18,6 +18,13 @@ public class LocationSimulator implements Runnable {
     private long id;
     private AtomicBoolean cancel = new AtomicBoolean();
 
+
+    //todo 这里, positionService是一个interface, 但是我们没有像之前一样, 用@autowire的方法注入进来
+    //因为, 这个interface伴随每一个LocationSimulator线程而创建一个属于thread的instance, 它不是singleton
+    //所以不能用注入的方法导入
+    //todo 这个positionService是一个interface, 为什么可以直接这么用?
+
+    //答疑: 这个positionService只有一个instance, 但是locaitionSimulator有多个instance
     @Setter
     private PositionService positionService;
 
@@ -26,6 +33,8 @@ public class LocationSimulator implements Runnable {
     private boolean shouldMove = true;
     private boolean exportPositionsToMessaging = true; //todo->管控是否向distribution发信息
     private Integer reportInternal;
+
+    //todo 搞明白下面这些field都是怎么传进来的
     private RunnerStatus runnerStatus = RunnerStatus.NONE;
     private String polyline;
     private MedicalInfo medicalInfo;
@@ -42,6 +51,8 @@ public class LocationSimulator implements Runnable {
     private Date executionStartTime;
 
 
+
+    //todo 这个constructor没有被call, 这些值怎么进来的
     public LocationSimulator(GpsSimulatorRequest gpsSimulatorRequest){
         this.runningId = gpsSimulatorRequest.getRunningId();
         this.setSpeed(gpsSimulatorRequest.getSpeed());
@@ -76,14 +87,14 @@ public class LocationSimulator implements Runnable {
                 if (positionInfo!= null) {
                     if (shouldMove) {
                         moveRunningLocation(); //todo: move to next position
-                        positionInfo.setSpeed(speedInMps); //todo 为什么set这个?
+                        positionInfo.setSpeed(speedInMps); //todo 为什么set这个?哪里改过这个?
                     }else{
                         positionInfo.setSpeed(0.0);
                     }
                     positionInfo.setRunnerStatus(this.runnerStatus);
 
                     final MedicalInfo medicalInfoToUse;
-                    switch (this.runnerStatus){
+                    switch (this.runnerStatus){ //todo 这个switch很有意思, 这三项执行同一个东西, 已验证
                         case SUPPLY_NOW:
                         case SUPPLY_SOON:
                         case STOP_NOW:
@@ -94,7 +105,8 @@ public class LocationSimulator implements Runnable {
                             break;
                     }
                     //todo 将positioninfo转换成currentPosition, 传给distribution服务
-                    //所以这里需要一个rest servcie, 将currentpositoin发送给distribution
+                    //所以这里需要一个rest service, 将currentpositoin发送给distribution
+                    //todo 为什么要用两个object来做这个事?
                     final CurrentPosition currentPosition = new CurrentPosition(
                             this.positionInfo.getRunningId(),
                             this.positionInfo.getRunnerStatus(),
@@ -106,8 +118,6 @@ public class LocationSimulator implements Runnable {
                                         );
 
                     positionService.processPositionInfo(id, currentPosition, this.exportPositionsToMessaging);
-
-
 
                 }
                 sleep(startTime);
@@ -165,7 +175,10 @@ public class LocationSimulator implements Runnable {
     //todo : https://stackoverflow.com/questions/3786825/volatile-boolean-vs-atomicboolean
     // 新的 todo :那为什么atomic还要加synchronized?好像没有说..继续想
 
-    private void setStartPosition(){
+
+
+    //定义"thread"的起始状态
+    public void setStartPosition(){
         positionInfo = new PositionInfo();
         positionInfo.setRunningId(this.runningId);
         Leg leg = legs.get(0);
