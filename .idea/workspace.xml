@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="87cd5cb9-cde2-4603-8e52-d9a134c806b5" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-cloud-nike-running/running-location-simulator/src/main/java/demo/SimulatorServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-nike-running/running-location-simulator/src/main/java/demo/SimulatorServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-cloud-nike-running/running-location-simulator/src/main/java/demo/service/PositionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-nike-running/running-location-simulator/src/main/java/demo/service/PositionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-cloud-nike-running/running-location-simulator/src/main/java/demo/service/PositionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-nike-running/running-location-simulator/src/main/java/demo/service/impl/PositionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-cloud-nike-running/running-location-simulator/src/main/java/demo/service/impl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-cloud-nike-running/running-location-simulator/src/main/java/demo/task/LocationSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-nike-running/running-location-simulator/src/main/java/demo/task/LocationSimulator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/supply-locaiton-service/target/" />
@@ -46,8 +41,8 @@
       <file leaf-file-name="LocationSimulatorRestApi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spring-cloud-nike-running/running-location-simulator/src/main/java/demo/rest/LocationSimulatorRestApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="21" column="66" selection-start-line="21" selection-start-column="66" selection-end-line="21" selection-end-column="66" />
+            <state relative-caret-position="474">
+              <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -450,12 +445,12 @@
       <workItem from="1544647876174" duration="10066000" />
       <workItem from="1544767960397" duration="1237000" />
       <workItem from="1545071165822" duration="7016000" />
-      <workItem from="1545179934356" duration="22852000" />
+      <workItem from="1545179934356" duration="23874000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66282000" />
+    <option name="totallyTimeSpent" value="67304000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -904,8 +899,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spring-cloud-nike-running/running-location-simulator/src/main/java/demo/rest/LocationSimulatorRestApi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="21" column="66" selection-start-line="21" selection-start-column="66" selection-end-line="21" selection-end-column="66" />
+        <state relative-caret-position="474">
+          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
